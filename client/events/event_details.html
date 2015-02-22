@@ -1,0 +1,54 @@
+<template name="eventDetails">
+<div class="container">
+    {{>eventsListItem}}
+    <div class="row">
+    <div class="col-md-8">
+    <div>{{this.description}}</div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        <h3>Контакты:</h3>
+        {{> contacts}}
+        </div>
+        <div class="col-md-9">
+        <h3>Возможное сотрудничество:</h3>
+        
+        {{#if canUpdate}}
+            {{#autoForm collection="Variants" id="insertVariantForm" type="insert"}}
+            <fieldset>
+                  {{> afQuickField name='description'}}
+                  {{> afQuickField name='price'}}
+                  {{> afQuickField name='quantity'}}
+                  {{> afQuickField name='eventId' value=this._id}}
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            {{/autoForm}}
+            <!-- {{variants}} -->
+          {{#each variants}}
+            {{this}}
+            {{this.price}}
+          {{/each}}
+        {{else}}
+            {{#each variants}}
+                {{this.description}} {{this.price}}
+            {{else}}
+            Чтобы узнать подробности свяжитесь с нами.
+            {{/each}}
+        {{/if}}
+        </div> 
+    </div>
+        {{#if canUpdate}}
+        <div class="row">
+        <h3>Редактировать мероприятие:</h3>
+        {{> quickForm collection="Events" doc=this id="updateEventForm" type="update"}}
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            <br>
+            <button class="btn btn-danger">Удалить</button>
+            </div>
+        </div>
+        {{/if}}
+</div>
+</template>

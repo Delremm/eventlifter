@@ -1,0 +1,57 @@
+<template name="home">
+  <div class="intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 relative">
+            <h1 class="text-center">Помогаем организаторам<br>
+            мероприятий
+            <br> найти спонсоров.</h1>
+            <div class="text-center">
+            <a href="{{pathFor 'learn'}}" class="btn btn-default">Узнать больше</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        {{#each events}}        
+            {{>eventsListItem}}
+        {{/each}}
+        </div>
+      </div>
+  </div>
+</template>
+
+<template name="eventsListItem">
+<div class="row eventsListItem">
+    <div class="col-md-2">
+    {{#if this.picture}}
+        {{#with imageUrl this.picture}}
+        <img src="{{url}}" uploading='/placeholder.gif' storing='/placeholder.gif' store='large' alt="" class="logo img-thumbnail"/>
+        {{/with}}
+    {{else}}
+        <img src="/placeholder.gif" class="logo img-thumbnail"/>
+    {{/if}}
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{{pathFor 'eventDetails' this._id}}"><h2>{{this.title}}</h2></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+            <div>
+              {{#each this.tags}}
+                <span  class="tag label label-info">{{this}}</span>
+              {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+</template>

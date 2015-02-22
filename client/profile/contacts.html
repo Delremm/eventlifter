@@ -1,0 +1,11 @@
+<template name="contacts">
+<div class="row">
+<div class="col-md-12">
+<p><b>Телефон:</b>{{profile.phone}}</p>
+<p><b>Email:</b>{{profile.email}}</p>
+{{#if profile.notes}}
+<p><b>Дополнительно:</b>{{profile.notes}}</p>
+{{/if}}
+</div>
+</div>
+</template>

@@ -1,0 +1,19 @@
+<template name="addEvent">
+    <div class="container">
+      <div class="row">
+{{# autoForm collection="Events" id="insertEventForm" type="insert"}}
+<fieldset>
+      <legend>Добавить мероприятие</legend>
+      {{> afQuickField name='title'}}
+      {{> afQuickField name='link'}}
+      {{> afQuickField name='description' rows=6}}
+      {{> afQuickField name="tags"}}
+      {{> afQuickField name='population'}}
+      {{> afQuickField name="picture"}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+  {{/autoForm}}
+        <br>
+      </div>
+    </div>
+</template>

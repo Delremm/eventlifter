@@ -1,0 +1,22 @@
+<template name="profile">
+    <div class="container">
+      <div class="row">
+      <h3>Контакты:</h3>
+      {{#if profile}}
+      {{> quickForm collection="Profiles" doc=profile id="updateProfileForm" type="update"}}
+      {{else}}
+      {{> quickForm collection="Profiles" id="updateProfileForm" type="insert"}}
+      {{/if}}
+      </div>
+      <div class="row">
+        <h3>Мои события:</h3>
+        <ul>
+          {{#each myEvents}}
+          <li><a href="{{pathFor 'eventDetails' this._id}}">{{this.title}}</a></li>
+          {{else}}
+          <li><a href="{{pathFor 'addEvent'}}">Добавить событие</a></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+</template>
